@@ -12,3 +12,8 @@ resource "aws_s3_bucket" "delivery_datalake_bucket" {
   bucket        = "02-delivery-${local.account_id}"
   force_destroy = true
 }
+
+resource "aws_s3_bucket" "lambda_bucket" {
+  bucket        = "lambda-${local.account_id}"
+  force_destroy = true
+}
