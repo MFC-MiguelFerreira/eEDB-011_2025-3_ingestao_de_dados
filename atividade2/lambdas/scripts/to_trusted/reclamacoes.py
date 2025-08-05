@@ -47,7 +47,14 @@ def lambda_handler(event, context):
     }
 
     reclamacoes_treated = reclamacoes.rename(columns=column_rename)[column_rename.values()]
-    reclamacoes_treated["name"] = reclamacoes_treated["name"].str.replace(r" S\/A|S\.A\.|\s\(conglomerado\)", "")
+    reclamacoes_treated["cnpj"] = reclamacoes_treated["cnpj"] \
+        .str.strip() \
+        .str.lower()
+    reclamacoes_treated["name"] = reclamacoes_treated["name"] \
+        .str.strip() \
+        .str.lower() \
+        .str.replace(r"\s*\(conglomerado\)$|\s*s\.a\.?|\s*s\/a|ltda\.?$", "", regex=True) \
+        .str.strip()
     reclamacoes_treated = reclamacoes_treated.astype(reclamacoes_schema)
 
     trusted_s3_path = f"s3://{trusted_bucket_name}/reclamacoes/reclamacoes.parquet.snappy"

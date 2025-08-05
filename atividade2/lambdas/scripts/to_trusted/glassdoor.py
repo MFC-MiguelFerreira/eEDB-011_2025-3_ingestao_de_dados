@@ -40,7 +40,17 @@ def lambda_handler(event, context):
     }
     empregados_treated = empregados \
         .rename(column_rename) \
-        .select(column_rename.values())
+        .select(column_rename.values()) \
+        .with_columns(
+            pl.col("cnpj")
+                .cast(pl.Utf8)
+                .str.strip_chars(),
+            pl.col("name")
+                .str.strip_chars()
+                .str.to_lowercase()
+                .str.replace(r"\s*-\s*prudencial$|s\.a\.?\s*-\s*prudencial$|s\.a\.?$|s\/a$|ltda\.?$", "")
+                .str.strip_chars()
+        )
     print("Columns renamed and selected")
 
     string_lastest_cols = ["cnpj", "segment", "revenue"]
