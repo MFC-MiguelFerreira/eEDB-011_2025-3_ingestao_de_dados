@@ -1,3 +1,33 @@
+# TERRAFORM GIT IGNORE
+
+## Local .terraform directories
+**/.terraform/*
+atividade2/terraform/builds
+
+## .tfstate files
+*.tfstate
+*.tfstate.*
+
+## Crash log files
+crash.log
+crash.*.log
+
+## Exclude sensitive data files (e.g., passwords, private keys)
+*.tfvars
+*.tfvars.json
+
+## Ignore override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+## Ignore transient lock info files created by `terraform apply`
+.terraform.tfstate.lock.info
+
+
+# PYTHON GIT IGNORE
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -205,3 +235,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+atividade2/lambdas/layer*
