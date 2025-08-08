@@ -29,7 +29,7 @@ Script para limpeza dos dados dos dados de bancos, seguir como base o [script](/
 Requesitos Mínimos:
 
 - correta tipagem dos dados
-- renomeação de colunas
+- renomeação, reordenação e deleção de colunas
 
     ```
     {
@@ -52,7 +52,7 @@ Script para limpeza dos dados dos dados de glassdoor, seguir como base o [script
 Requesitos Mínimos:
 
 - correta tipagem dos dados
-- renomeação de colunas
+- renomeação, reordenação e deleção de colunas
     ```
     {
         "CNPJ": "cnpj",
@@ -89,7 +89,7 @@ Script para limpeza dos dados dos dados de reclamacoes, seguir como base o [scri
 Requesitos Mínimos:
 
 - correta tipagem dos dados
-- renomeação de colunas
+- renomeação, reordenação e deleção de colunas
     ```
     {
         "CNPJ IF": "cnpj",
@@ -133,3 +133,9 @@ Requesitos Mínimos:
     - é possível criar o schema no banco utilizando o [script](/atividade2/sql/atividade2.sql), desde as renomeações sejam realizadas de forma correta nas etapas anteriores
 
 ---
+
+## Ambiente Local
+
+### Devcontainer
+
+Para rodar o pyspark localmente é necessário seguir o passo à passo do readme de repositório [pyspark-devcontainer](https://github.com/jplane/pyspark-devcontainer). Para rodar um script `.py` ao invés do notebook é necessário rodar o seguinte comando: `spark-submit arquivo.py`
