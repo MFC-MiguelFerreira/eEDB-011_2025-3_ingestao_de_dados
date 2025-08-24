@@ -11,7 +11,7 @@ sources:
           external_location: "read_csv('./data/source/empregados/*.csv', sep='|', header=true, union_by_name=true)"
       - name: reclamacoes
         meta:
-          external_location: "read_csv_auto('./data/source/reclamacoes_utf8/*.csv', sep=';', header=true, encoding='utf-8', ignore_errors=true, union_by_name=true)"
+          external_location: "read_csv_auto('./data/source/reclamacoes/*.csv', sep=';', header=true, encoding='utf-8-sig', ignore_errors=true, union_by_name=true)"
   - name: raw
     tables:
       - name: bancos
@@ -23,3 +23,19 @@ sources:
       - name: reclamacoes
         meta:
           external_location: "read_parquet('./data/raw/reclamacoes/reclamacoes.parquet')"
+  - name: trusted
+    tables:
+      - name: bancos
+        meta:
+          external_location: "read_parquet('./data/trusted/bancos/bancos.parquet')"
+      - name: glassdoor
+        meta:
+          external_location: "read_parquet('./data/trusted/glassdoor/glassdoor.parquet')"
+      - name: reclamacoes
+        meta:
+          external_location: "read_parquet('./data/trusted/reclamacoes/reclamacoes.parquet')" 
+  - name: delivery
+    tables:
+      - name: delivery
+        meta:
+          external_location: "read_parquet('./data/delivery/delivery.parquet')"
