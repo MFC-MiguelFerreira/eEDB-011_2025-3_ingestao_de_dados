@@ -16,6 +16,21 @@
    dbt run
    ```
 
+   Arquivo `.dbt/profiles.yml`:
+
+   ```yml
+   atividade4:
+    outputs:
+        duckdb:
+        type: duckdb
+        path: dev.duckdb
+        threads: 1
+        extensions:
+            - postgres
+
+    target: duckdb
+   ```
+
 ## Executando o PostgreSQL com Docker
 
 1. **Inicie o container PostgreSQL**
