@@ -1,15 +1,37 @@
-Welcome to your new dbt project!
+# Atividade 4
 
-### Using the starter project
+## Configuração do Ambiente
 
-Try running the following commands:
-- dbt run
-- dbt test
+1. **Instale as dependências**
+   
+   Execute o comando abaixo para instalar os requisitos do projeto, incluindo o `dbt-duckdb`:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+2. **Inicialize o projeto dbt**
+   
+   Execute o comando para rodar o projeto dbt com DuckDB:
+   ```bash
+   dbt run
+   ```
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## Executando o PostgreSQL com Docker
+
+1. **Inicie o container PostgreSQL**
+   
+   Use o arquivo `docker-compose.yml` para subir o banco de dados:
+   ```bash
+   docker-compose up -d
+   ```
+
+## Exportando dados para o PostgreSQL
+
+1. **Exporte os dados usando dbt**
+   
+   Execute o comando abaixo para exportar o modelo DuckDB para a tabela `atividade4` no PostgreSQL:
+   ```bash
+   dbt run-operation export_to_postgres --args '{"model_name": "to_db.to_db", "pg_table": "atividade4"}'
+   ```
+
+Certifique-se de que o container PostgreSQL está rodando antes de exportar os dados.
