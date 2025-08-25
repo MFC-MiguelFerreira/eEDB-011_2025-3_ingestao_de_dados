@@ -11,7 +11,7 @@ sources:
           external_location: "read_csv('./data/source/empregados/*.csv', sep='|', header=true, union_by_name=true)"
       - name: reclamacoes
         meta:
-          external_location: "read_csv_auto('./data/source/reclamacoes/*.csv', sep=';', header=true, encoding='utf-8-sig', ignore_errors=true, union_by_name=true)"
+          external_location: "read_csv_auto('./data/source/reclamacoes/*.csv', sep=';', header=true, encoding='utf-8', ignore_errors=true, union_by_name=true)"
   - name: raw
     tables:
       - name: bancos
