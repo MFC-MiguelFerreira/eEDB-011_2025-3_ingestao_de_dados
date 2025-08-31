@@ -8,6 +8,7 @@ from scripts.to_trusted.bancos import to_trusted_bancos
 from scripts.to_trusted.glassdoor import to_trusted_glassdoor
 from scripts.to_trusted.reclamacoes import to_trusted_reclamacoes
 from scripts.to_delivery.delivery import to_delivery
+from scripts.to_db.to_db import to_db
 
 @dag(
     dag_id="atividade5"
@@ -22,11 +23,14 @@ def atividade5():
     reclamacoes_raw_to_trs = to_trusted_reclamacoes.override(task_id="to_trusted_reclamacoes")()
     
     final_trs_dlv = to_delivery.override(task_id="to_delivery")()
+    delivery_to_db = to_db.override(task_id="to_db")()
 
     bancos_src_to_raw >> bancos_raw_to_trs
     glassdoor_src_to_raw >> glassdoor_raw_to_trs
     reclamacoes_src_to_raw >> reclamacoes_raw_to_trs
 
     [bancos_raw_to_trs, glassdoor_raw_to_trs, reclamacoes_raw_to_trs] >> final_trs_dlv
+
+    final_trs_dlv >> delivery_to_db
 
 atividade5()

@@ -1,2 +1,4 @@
 polars==1.32.0
 apache-airflow==3.0.6
+adbc_driver_postgresql
+adbc_driver_manager

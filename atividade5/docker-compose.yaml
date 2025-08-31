@@ -104,6 +104,18 @@ services:
       start_period: 5s
     restart: always
 
+  atividade5_db:
+    container_name: atividade5-postgres-db
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: atividade5
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: atividade5
+    volumes:
+      - atividade5-db-volume:/var/lib/postgresql/data
+
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
     # https://redis.io/blog/redis-adopts-dual-source-available-licensing/
@@ -336,3 +348,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  atividade5-db-volume:
