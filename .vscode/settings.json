@@ -18,6 +18,16 @@
             "name": "atividade4",
             "database": "postgres",
             "username": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "atividade5",
+            "database": "atividade5",
+            "username": "atividade5"
         }
     ]
 }
