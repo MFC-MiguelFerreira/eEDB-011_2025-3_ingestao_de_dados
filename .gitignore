@@ -240,3 +240,7 @@ __marimo__/
 atividade2/lambdas/layer*
 
 atividade5/logs
+
+data/saida/
+
+.env
