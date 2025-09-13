@@ -33,5 +33,8 @@ module "ecr" {
 
   create_lifecycle_policy = false
 
-  repository_lambda_read_access_arns = [module.lambda_function_with_docker_build_from_ecr.lambda_function_arn]
+  repository_lambda_read_access_arns = [
+    module.lambda_function_with_docker_build_from_ecr_producer.lambda_function_arn,
+    module.lambda_function_with_docker_build_from_ecr_consumer.lambda_function_arn
+  ]
 }
