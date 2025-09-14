@@ -10,29 +10,24 @@ resource "aws_glue_catalog_table" "bancos" {
 
   storage_descriptor {
     location      = "s3://${aws_s3_bucket.atividade5_bucket.bucket}/bancos/"
-    input_format  = "org.apache.hadoop.mapred.TextInputFormat"
-    output_format = "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
 
     ser_de_info {
-      name                  = "OpenCSVSerDe"
-      serialization_library = "org.apache.hadoop.hive.serde2.OpenCSVSerde"
-      parameters = {
-        "separatorChar" = "\t"
-        "quoteChar"     = "\""
-        "escapeChar"    = "\\"
-      }
+      name                  = "ParquetHiveSerDe"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
     }
 
     columns {
-      name = "Segmento"
+      name = "segment"
       type = "string"
     }
     columns {
-      name = "CNPJ"
+      name = "cnpj"
       type = "string"
     }
     columns {
-      name = "Nome"
+      name = "name"
       type = "string"
     }
   }

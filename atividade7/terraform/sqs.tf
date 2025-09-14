@@ -1,6 +1,6 @@
 resource "aws_sqs_queue" "producer_queue" {
   name = "${var.project_name}-producer-queue"
-  visibility_timeout_seconds = 120
+  visibility_timeout_seconds = 10
 }
 
 resource "aws_sqs_queue_policy" "producer_queue_policy" {
